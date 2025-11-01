@@ -1,0 +1,10 @@
+server_host = 192.168.1.111
+search_base = ou=usuarios,dc=seadra,dc=com
+version = 3
+bind = yes
+bind_dn = cn=admin,dc=seadra,dc=com
+bind_pw = garcia
+
+# filtro para consultas: buscar usuarios por correo
+query_filter = (&(objectClass=inetOrgPerson)(mail=%s))
+result_attribute = mail
