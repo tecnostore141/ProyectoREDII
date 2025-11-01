@@ -1,0 +1,26 @@
+$TTL 604800
+@	IN	SOA   ns1.onix.com. admin.onix.com. (
+                	3 ; Serial
+                	604800 	; Refresh
+                	86400  	; Retry
+                	2419200	; Expire
+                	604800 )   ; Negative Cache TTL
+
+@   	IN	NS	ns1.onix.com.
+
+; PTR records para slave
+111    	IN    	PTR    	onix.com.
+111 	IN    	PTR    	www.onix.com.
+111 	IN  	PTR 	raichu.com.
+111 	IN  	PTR 	www.raichu.com.
+111 	IN  	PTR 	articuno.com.
+111 	IN  	PTR 	www.articuno.com.
+111 	IN  	PTR 	seadra.com.
+111 	IN  	PTR 	www.seadra.com.
+
+
+; PTR records para master
+102 	IN	PTR	ns1.onix.com.
+102 	IN	PTR	ns1.raichu.com.
+102 	IN	PTR	ns1.articuno.com.
+102 	IN	PTR	ns1.seadra.com.

@@ -1,0 +1,38 @@
+//
+// Do any local configuration here
+//
+
+zone "onix.com" {
+	type master;
+	file "/etc/bind/db.onix.com";
+	allow-transfer { 192.168.1.111; };
+	also-notify { 192.168.1.111; };
+};
+
+zone "raichu.com" {
+        type master;
+        file "/etc/bind/db.raichu.com";
+	allow-transfer { 192.168.1.111; };
+        also-notify { 192.168.1.111; };
+};
+
+zone "articuno.com" {
+        type master;
+        file "/etc/bind/db.articuno.com";
+	allow-transfer { 192.168.1.111; };
+        also-notify { 192.168.1.111; };
+};
+
+zone "seadra.com" {
+        type master;
+        file "/etc/bind/db.seadra.com";
+	allow-transfer { 192.168.1.111; };
+        also-notify { 192.168.1.111; };
+};
+
+zone "1.168.192.in-addr.arpa" {
+        type master;
+        file "/etc/bind/db.192";
+	allow-transfer { 192.168.1.111; };
+        also-notify { 192.168.1.111; };
+};
