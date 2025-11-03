@@ -1,49 +1,23 @@
-# Authentication for LDAP users. Included from auth.conf.
-#
-# <https://doc.dovecot.org/latest/core/config/auth/databases/ldap.html>
-
-## See <https://doc.dovecot.org/latest/core/config/dict.html#ldap>
- 
+# LDAP connection
 ldap_uris = ldap://192.168.1.111
 ldap_auth_dn = cn=admin,dc=seadra,dc=com
 ldap_auth_dn_password = garcia
 ldap_base = dc=seadra,dc=com
 
 passdb ldap {
-  ldap_filter = (&(objectClass=inetOrgPerson)(cn=%{user}))
+  ldap_filter = (&(objectClass=inetOrgPerson)(|(cn=%{user})(mail=%{user})))
   ldap_bind = no
 
   fields {
-     user=%{ldap:cn}
-     password=%{ldap:userPassword}
-    # userdb_home=%{ldap:homeDirectory}
-    # userdb_uid=%{ldap:uidNumber}
-    # userdb_gid=%{ldap:gidNumber}
+    user = %{ldap:cn}
+    password = %{ldap:userPassword}
   }
 }
 
-# "prefetch" user database means that the passdb already provided the
-# needed information and there's no need to do a separate userdb lookup.
-# <https://doc.dovecot.org/latest/core/config/auth/databases/prefetch.html>
-#userdb prefetch {
-#}
-
-#userdb ldap {
-#  ldap_filter = (&(objectClass=posixAccount)(uid=%{user}))
-
-# Default fields can be used to specify defaults that LDAP may override
-#  fields {
-#    home=/home/virtual/%{user}
-#  }
-#}
-
-# If you don't have any user-specific settings, you can avoid the userdb LDAP
-# lookup by using userdb static instead of userdb ldap, for example:
-# <https://doc.dovecot.org/latest/core/config/auth/databases/static.html>
 userdb static {
   fields {
     uid = vmail
     gid = vmail
-    home = /var/vmail/vhosts/%{user}
+    home = /var/mail/vhosts/seadra.com/%{user}/Maildir/
   }
 }

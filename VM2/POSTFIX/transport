@@ -1,0 +1,4 @@
+# Transport map para enrutamiento entre dominios
+onix.com     smtp:[192.168.1.102]
+seadra.com   local:
+.local       local:

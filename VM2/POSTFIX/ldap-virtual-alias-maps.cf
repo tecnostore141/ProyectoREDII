@@ -5,6 +5,6 @@ bind = yes
 bind_dn = cn=admin,dc=seadra,dc=com
 bind_pw = garcia
 
-# filtro: alias de correos
+# Filtro para alias de correo
 query_filter = (&(objectClass=inetOrgPerson)(mail=%s))
 result_attribute = mail
