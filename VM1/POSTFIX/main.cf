@@ -1,61 +1,45 @@
 # ===================== INFORMACIÓN GENERAL =====================
-compatibility_level = 3.9
 myhostname = mail.onix.com
 mydomain = onix.com
 myorigin = $mydomain
 
+# Interfaces y protocolos
 inet_interfaces = all
 inet_protocols = ipv4
+
+# ===================== DESTINOS LOCALES =====================
+mydestination = $myhostname, mail.onix.com, onix.com, localhost
 
 # ===================== REDES PERMITIDAS =====================
 mynetworks_style = host
 mynetworks = 127.0.0.0/8, 192.168.1.0/24, 192.168.1.102/24
 
-# ===================== DESTINOS LOCALES =====================
-mydestination = $myhostname, mail.onix.com, onix.com, localhost
-
-# ===================== TAMAÑO DE BUZONES =====================
+# ===================== Buzones =====================
+home_mailbox = Maildir/
 mailbox_size_limit = 0
 recipient_delimiter = +
-home_mailbox = Maildir/
-
-relay_domains = $mydestination, seadra.com
-transport_maps = hash:/etc/postfix/transport
 
 # ===================== TLS/SSL =====================
+# Deshabilitado por ahora, opcional
 #smtpd_tls_cert_file = /etc/ssl/certs/ssl-cert-snakeoil.pem
 #smtpd_tls_key_file = /etc/ssl/private/ssl-cert-snakeoil.key
 #smtpd_tls_security_level = may
-#smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
 #smtp_tls_security_level = may
-#smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 
-# ===================== AUTENTICACIÓN SASL =====================
-#smtpd_sasl_type = dovecot
-#smtpd_sasl_path = private/auth
-#smtpd_sasl_auth_enable = yes
-#smtpd_sasl_local_domain = $myhostname
+# ===================== Autenticación SASL =====================
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_local_domain = $myhostname
+smtpd_recipient_restrictions = 
+    permit_mynetworks,
+    permit_sasl_authenticated,
+    reject_unauth_destination
 
-# ===================== RESTRICCIONES =====================
-#smtpd_relay_restrictions = permit_mynetworks, permit_sasl_authenticated, defer_unauth_destination
-
-# ===================== ENTREGA LOCAL (DOVECOT LMTP) =====================
-#virtual_transport = lmtp:unix:private/dovecot-lmtp
-
-# ===================== DOMINIOS Y USUARIOS VIRTUALES =====================
-#virtual_mailbox_domains = ldap:/etc/postfix/ldap-virtual-domains.cf
-#virtual_mailbox_base = /var/mail/vhosts
-#virtual_mailbox_maps = ldap:/etc/postfix/ldap-virtual-mailbox-maps.cf
-#virtual_alias_maps = ldap:/etc/postfix/ldap-virtual-alias-maps.cf
-
-#virtual_uid_maps = static:5000
-#virtual_gid_maps = static:5000
-
-# ===================== ALIAS =====================
+# ===================== Alias =====================
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
 
-# ===================== OTROS =====================
+# ===================== Otros =====================
 biff = no
 relayhost =
-
