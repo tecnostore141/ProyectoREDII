@@ -20,7 +20,6 @@ mailbox_size_limit = 0
 recipient_delimiter = +
 
 # ===================== TLS/SSL =====================
-# Deshabilitado por ahora, opcional
 #smtpd_tls_cert_file = /etc/ssl/certs/ssl-cert-snakeoil.pem
 #smtpd_tls_key_file = /etc/ssl/private/ssl-cert-snakeoil.key
 #smtpd_tls_security_level = may
