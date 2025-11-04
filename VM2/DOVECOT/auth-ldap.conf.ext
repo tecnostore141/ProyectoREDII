@@ -5,7 +5,7 @@ ldap_auth_dn_password = garcia
 ldap_base = dc=seadra,dc=com
 
 passdb ldap {
-  ldap_filter = (&(objectClass=inetOrgPerson)(|(cn=%{user})(mail=%{user})))
+  ldap_filter = (&(objectClass=inetOrgPerson)(cn=%{user}))
   ldap_bind = no
 
   fields {
