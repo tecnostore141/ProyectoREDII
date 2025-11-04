@@ -2,3 +2,41 @@ dn: ou=usuarios,dc=seadra,dc=com
 objectClass: organizationalUnit
 objectClass: top
 ou: usuarios
+
+dn: ou=Departamentos,dc=seadra,dc=com
+objectClass: organizationalUnit
+objectClass: top
+ou: Departamentos
+description: Entidades de la empresa
+
+dn: cn=TI,ou=Departamentos,dc=seadra,dc=com
+objectClass: organizationalRole
+objectClass: top
+cn: TI
+description: Departamento de TI
+
+dn: cn=oro,ou=usuarios,dc=seadra,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: oro
+sn: surname
+description: usuario virtual 1
+mail: oro@seadra.com
+ou: TI
+uid: oro
+userPassword: {SSHA}yS7tU8mh2m+zjvTOn6Qzn1NEF3u4O1mE
+
+dn: cn=plata,ou=usuarios,dc=seadra,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: plata
+sn: surname
+description: usuario virtual 2
+mail: plata@seadra.com
+ou: TI
+uid: plata
+userPassword: {SSHA}yS7tU8mh2m+zjvTOn6Qzn1NEF3u4O1mE
