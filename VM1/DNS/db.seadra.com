@@ -10,7 +10,7 @@ $TTL	604800
 @       IN      NS      ns1.seadra.com.
 
 ; Direcciones del servidor
-ns1     IN      A       192.168.1.111
+ns1     IN      A       192.168.1.102
 @       IN      A       192.168.1.111
 
 ; Servidor de correo
