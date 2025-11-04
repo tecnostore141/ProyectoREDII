@@ -34,8 +34,7 @@ mynetworks = 127.0.0.0/8, 192.168.1.0/24
 
 # List of domains (maptype:mapname allowed) that this machine considers
 # itself the final destination for.
-mydestination = $myhostname, mail.seadra.com, localhost, seadra.com
-local_recipient_maps = $virtual_mailbox_maps
+mydestination = $myhostname, mail.seadra.com, localhost
 
 # Maximum size of a user mailbox
 mailbox_size_limit = 0
@@ -113,18 +112,6 @@ smtpd_sasl_path = private/auth
 smtpd_sasl_auth_enable = yes
 smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
 
-# Configuración para comunicación con onix.com
-# Dominios para los cuales actuamos como relay
-relay_domains = $mydestination, onix.com
-
-# Configuración de transporte para enrutamiento entre dominios
-transport_maps = hash:/etc/postfix/transport
 
 # Para evitar problemas de resolución DNS
 smtp_host_lookup = native
-
-# Seguridad adicional para relay
-smtpd_recipient_restrictions = 
-    permit_mynetworks,
-    permit_sasl_authenticated,
-    reject_unauth_destination
